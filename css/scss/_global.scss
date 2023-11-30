@@ -13,14 +13,35 @@ img {
   max-width: 100%;
 }
 
+.formphp label.nao-aparece,
+.formphp input.nao-aparece {
+  display: none !important;
+}
+
+#form-erro span,
+#form-send span {
+  @include tipo-1(18);
+  margin-bottom: 10px;
+  display: block;
+}
+
+#form-send {
+  color: #31aa39;
+}
+
+#form-erro {
+  color: #f64540;
+}
+
 .btn {
   border: 3px solid $amarelo;
   padding: 10px 30px;
   color: $amarelo;
+  @include tipo-1(14);
   text-transform: uppercase;
   font-weight: bold;
   letter-spacing: 0.1em;
-  @include tipo-1(14);
+  transition: all 0.5s ease;
 }
 
 .btn:hover {
@@ -34,13 +55,13 @@ img {
 }
 
 .subtitulo {
+  @include tipo-1(24);
   font-weight: bold;
   letter-spacing: 0.1em;
   color: $black;
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 40px;
-  @include tipo-1(24);
 }
 
 .subtitulo:after {
@@ -53,12 +74,12 @@ img {
 }
 
 .subtitulo-interno {
+  @include tipo-1(24);
   font-weight: bold;
   letter-spacing: 0.1em;
   color: $black;
   text-transform: uppercase;
   margin-bottom: 20px;
-  @include tipo-1(24);
 }
 
 .subtitulo-interno:after {
@@ -79,16 +100,32 @@ img {
   background: $amarelo; /* Amarelo */
   padding: 15px 0;
   z-index: 10;
+  @include d(m) {
+    position: relative;
+    padding-bottom: 0px;
+  }
+}
+
+.header img {
+  @include d(m) {
+    margin: 0 auto 10px auto;
+  }
 }
 
 .header_menu {
   text-align: right;
+  @include d(m) {
+    text-align: center;
+  }
 }
 
 .header_menu ul li {
   display: inline-block;
   margin-left: 25px;
   margin-top: 20px;
+  @include d(m) {
+    margin: 5px;
+  }
 }
 
 .header_menu ul li a {
@@ -96,16 +133,22 @@ img {
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  padding: 10px 0;
   @include tipo-1(14);
-}
-
-.header_menu ul li a:hover {
-  color: $white;
-}
-
-.header_menu ul li a.menu_ativo {
-  color: $white;
+  padding: 10px 0;
+  transition: all 0.3s ease;
+  @include d(m) {
+    border: 4px solid $black;
+    width: 136px;
+    display: block;
+    float: left;
+  }
+  &:hover,
+  &.menu_ativo {
+    color: $white;
+    @include d(m) {
+      border-color: $white;
+    }
+  }
 }
 
 /* Introdução */
@@ -118,13 +161,22 @@ img {
   margin-top: 92px;
   text-align: center;
   padding-top: 80px;
+  @include d(m) {
+    margin-top: 0px;
+    padding-top: 40px;
+    background: url("../img/bg-mobile.jpg") no-repeat center;
+    background-size: cover;
+  }
 }
 
 .introducao h1 {
+  @include tipo-1(48);
   color: $white;
   font-weight: bold;
   text-transform: uppercase;
-  @include tipo-1(48);
+  @include d(m) {
+    @include tipo-1(36);
+  }
 }
 
 .quote-externo {
@@ -149,9 +201,10 @@ img {
 }
 
 .quote-externo cite {
+  font-style: normal;
   font-weight: bold;
-  letter-spacing: 0.1em;
   @include tipo-1(14);
+  letter-spacing: 0.1em;
 }
 
 /*Introducao Interna*/
@@ -163,12 +216,15 @@ img {
   text-align: center;
   color: $white;
   padding-top: 30px;
+  @include d(m) {
+    margin-top: 0px;
+  }
 }
 
 .introducao-interna h1 {
+  @include tipo-1(36);
   font-weight: bold;
   text-transform: uppercase;
-  @include tipo-1(36);
 }
 
 .introducao-interna h1:after {
@@ -191,17 +247,16 @@ img {
   text-align: center;
 }
 
-/* Necessário para centralizar as imagens */
 .produtos_lista li img {
   margin: 0 auto;
 }
 
 .produtos_lista li h3 {
   font-weight: bold;
+  @include tipo-1(18);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 20px;
-  @include tipo-1(18);
 }
 
 .produtos_lista li h3:after {
@@ -226,6 +281,9 @@ img {
   padding-top: 40px;
   text-align: center;
   clear: both;
+  @include d(m) {
+    padding-top: 10px;
+  }
 }
 
 .call p {
@@ -248,7 +306,7 @@ img {
   background: $amarelo;
 }
 
-.portfolio_lista li:last-child {
+.portfolio_lista div:last-of-type {
   margin-top: 20px;
 }
 
@@ -267,11 +325,17 @@ img {
   width: 634px;
   height: 83px;
   display: block;
-  background: url("../img/linhas.svg") no-repeat center;
+  background: url("../img/linhas.png") no-repeat center;
   position: absolute;
   top: 209px;
   right: 162px;
   z-index: -1;
+  @include d(t) {
+    right: 66px;
+  }
+  @include d(m) {
+    display: none;
+  }
 }
 
 .qualidade img {
@@ -286,14 +350,17 @@ img {
 .qualidade_lista li {
   text-align: center;
   padding: 0 40px;
+  @include d(t) {
+    padding: 0 10px;
+  }
 }
 
 .qualidade_lista li h3 {
   font-weight: bold;
+  @include tipo-1(18);
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-top: 20px;
-  @include tipo-1(18);
 }
 
 .qualidade_lista li h3:after {
@@ -330,11 +397,11 @@ img {
 }
 
 .footer h3 {
+  @include tipo-1(18);
   color: $amarelo;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-weight: bold;
-  @include tipo-1(18);
 }
 
 .footer h3:after {
@@ -363,6 +430,18 @@ img {
   border: 3px solid $amarelo;
   display: block;
   padding: 10px;
+  transition: all 0.5s ease;
+  @include d(t) {
+    border: 3px solid $amarelo;
+    display: block;
+    padding: 6px;
+  }
+}
+.footer_redes ul li a img {
+  @include d(t) {
+    width: 26px;
+    height: 26px;
+  }
 }
 
 .footer_redes ul li a:hover {
@@ -375,71 +454,54 @@ img {
   padding: 20px 0;
 }
 
-/* JavaScript */
+/*Animações*/
 
-.js [data-slide] {
-  position: relative;
-}
-
-.js [data-slide] > * {
-  position: absolute;
-  top: 0px;
+.js .introducao h1,
+.js .introducao blockquote,
+.js .introducao .btn,
+.js .animar,
+.js .animar-interno,
+.js .introducao-interna h1,
+.js .introducao-interna p {
   opacity: 0;
 }
 
-.js [data-slide] > .active {
-  position: relative;
-  opacity: 1;
-  transition: opacity 500ms;
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
-.js [data-slide-nav] {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 
-.js [data-slide-nav] button {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin: 4px;
-  border: none;
-  padding: 0px;
-  border-radius: 6px;
-  text-indent: -99px;
-  overflow: hidden;
-  background: #1d1d1d;
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+  }
+
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
 }
 
-.js [data-slide-nav] button.active {
-  background: $amarelo;
-}
-
-.js [data-anime] {
-  opacity: 0;
-}
-
-.js .fadeInDown {
-  transform: translate3d(0, -20px, 0);
-}
-
-.js .anime {
-  opacity: 1;
-  transform: none;
-  transition: opacity 800ms, transform 800ms;
-}
-
-.nao-aparece {
-  visibility: hidden;
-  position: absolute;
-  height: 0px;
-}
-
-#form-sucesso {
-  color: #31aa39;
-}
-
-#form-erro {
-  color: #f64540;
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
 }
